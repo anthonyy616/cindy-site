@@ -1,31 +1,37 @@
 import { useState, useRef } from 'react';
 import Overlay from './components/Overlay';
 import ValentinesDayUI from './components/ValentinesDayUI';
+import Slideshow from './components/Slideshow';
+
+type Stage = 'overlay' | 'slideshow' | 'final';
 
 function App() {
-  const [hasEntered, setHasEntered] = useState(false);
+  const [stage, setStage] = useState<Stage>('overlay');
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const handleEnter = () => {
-    setHasEntered(true);
+    setStage('slideshow');
     if (audioRef.current) {
       audioRef.current.play().catch(e => console.log("Audio play failed", e));
-      audioRef.current.volume = 0.5; // Start at 50% volume
+      audioRef.current.volume = 0.5;
     }
+  };
+
+  const handleSlideshowDone = () => {
+    setStage('final');
   };
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {!hasEntered && <Overlay onEnter={handleEnter} />}
+      {stage === 'overlay' && <Overlay onEnter={handleEnter} />}
 
-      {/* Main Content (always rendered but hidden/under overlay? No, better to mount it) */}
-      {/* We can mount it after enter for cleaner DOM, or keep it to pre-render. 
-          Let's mount it after for animation trigger. */}
-      {hasEntered && <ValentinesDayUI />}
+      {stage === 'slideshow' && <Slideshow onDone={handleSlideshowDone} />}
 
-      {/* Audio Element */}
+      {stage === 'final' && <ValentinesDayUI />}
+
+      {/* Audio Element - Fixed filename */}
       <audio ref={audioRef} loop>
-        <source src="/music.mp3" type="audio/mpeg" />
+        <source src="/Muni Long - Made For Me (Audio).mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
     </div>
