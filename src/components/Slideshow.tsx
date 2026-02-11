@@ -9,6 +9,8 @@ interface SlideshowProps {
 const images = [
     "/cindy 2.jpg",
     "/cindy 3.jpg",
+    "/cindy 4.jpg",
+    "/cindy 5.jpg",
     "/cindy fav.jpg"
 ];
 
@@ -48,20 +50,18 @@ const Slideshow: React.FC<SlideshowProps> = ({ onDone }) => {
                 />
             </AnimatePresence>
 
-            {/* Floating Quotes */}
-            <div className="absolute inset-0 pointer-events-none">
+            {/* Floating Quotes - Centered via Flexbox */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 px-4">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={currentQuote}
-                        initial={{ opacity: 0, y: 20, x: Math.random() * 200 - 100 }}
+                        initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
+                        exit={{ opacity: 0, y: -30 }}
                         transition={{ duration: 0.8 }}
-                        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl md:text-4xl font-serif text-red-800 font-bold text-center drop-shadow-lg px-4"
+                        className="max-w-4xl text-2xl md:text-5xl font-serif text-white font-bold text-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
                         style={{
-                            // Randomize slightly for "floating" effect, but keep centered-ish
-                            marginTop: `${Math.random() * 200 - 100}px`,
-                            marginLeft: `${Math.random() * 100 - 50}px`
+                            textShadow: "0px 4px 10px rgba(0,0,0,0.8)"
                         }}
                     >
                         "{loveQuotes[currentQuote]}"
