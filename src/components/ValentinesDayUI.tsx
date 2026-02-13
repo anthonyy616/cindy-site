@@ -84,10 +84,10 @@ const ValentinesDayUI: React.FC = () => {
                 <div className="mb-6 p-4 bg-pink-50 rounded-lg w-full">
                     <h3 className="text-red-500 font-semibold mb-2">Celebrating Us</h3>
                     <div className="text-gray-600 text-sm">
-                        Since the day we met, my life has changed forever.
+                        Since the day I set my eyes on you, I knew you were the one.
                         <br />
                         <span className="text-xs text-red-400 mt-1 block">
-                            (Here's to many more years together!)
+                            (Here's to many more memories together!)
                         </span>
                     </div>
                 </div>
