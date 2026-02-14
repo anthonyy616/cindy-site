@@ -2,12 +2,17 @@ import { useState, useRef } from 'react';
 import Overlay from './components/Overlay';
 import ValentinesDayUI from './components/ValentinesDayUI';
 import Slideshow from './components/Slideshow';
+import IntroSequence from './components/IntroSequence';
 
-type Stage = 'overlay' | 'slideshow' | 'final';
+type Stage = 'intro' | 'overlay' | 'slideshow' | 'final';
 
 function App() {
-  const [stage, setStage] = useState<Stage>('overlay');
+  const [stage, setStage] = useState<Stage>('intro');
   const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const handleIntroComplete = () => {
+    setStage('overlay');
+  };
 
   const handleEnter = () => {
     setStage('slideshow');
@@ -23,6 +28,8 @@ function App() {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
+      {stage === 'intro' && <IntroSequence onComplete={handleIntroComplete} />}
+
       {stage === 'overlay' && <Overlay onEnter={handleEnter} />}
 
       {stage === 'slideshow' && <Slideshow onDone={handleSlideshowDone} />}

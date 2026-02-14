@@ -11,6 +11,7 @@ export const reasonsWhyILoveYou = [
     "You challenge me to be a better person without even knowing it.",
     "You have the most beautiful eyes. I tell you this everytime lol",
     "We can talk for hours about absolutely nothing.",
+    "You're so gentle and soft-spoken",
     "Silence with you is never awkward, just peaceful.",
     "You make the mundane moments feel special.",
     "The way you care for your family and friends.",
@@ -45,5 +46,8 @@ export const reasonsWhyILoveYou = [
     "You make life exciting.",
     "I see forever when I look into your eyes.",
     "Simply because you are you.",
+    "I just do, do I really need to say more?",
+    "You're the most beautiful girl ever",
+    "Sweetest person ever",
     "This is the end - I didn't run out of reasons I just didnt want to bore you. Thank you cindy"
 ];
